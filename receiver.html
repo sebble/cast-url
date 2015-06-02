@@ -28,6 +28,17 @@
             p {
                 padding-top: 1em;
             }
+            iframe {
+                position:absolute;
+                top:0;
+                left:0;
+                width:100%;
+                height:100%;
+                bottom:0;
+                right:0;
+                z-index:999;
+                display: none;
+            }
 
         </style>
     </head>
@@ -37,6 +48,8 @@
             <p>Please enter a URL to load using the sbl.io cast app.</p>
             <div id="message"></div>
         </div>
+
+        <iframe id="iframe"></iframe>
 
         <script type="text/javascript" src="https://www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
     <script type="text/javascript">
@@ -92,6 +105,8 @@
       function displayText(text) {
         console.log(text);
         document.getElementById("message").innerHTML=text;
+        document.getElementById("iframe").src=text;
+        document.getElementById("iframe").style.display='block';
         window.castReceiverManager.setApplicationState(text);
       };
     </script>
